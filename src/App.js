@@ -1,15 +1,33 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 function App()
 {
-     const [status,setstatus]=React.useState(false)
-     return(
-     <div className="App">{
-               status?<h1>my name is guri </h1>:null
+     const[name,setname]=useState("");
+     const[tnc,setTnc]=useState(false);
+     const[intrest,setintrest]=useState("")
+     function getformData(e)
+     {
+          console.warn(name,tnc,intrest)
+          e.preventDefault()
      }
-               <button onClick={()=>setstatus(!status)}>show</button>
+     return(
+     <div className="App">
+          <h1>moves counter</h1>
+          <form onSubmit={getformData}>
+               <input type="text" placeholder="enter name"onChange={(e)=>setname(e.target.value)} /><br></br>
+<select onChange={(e)=>setintrest(e.target.value)}>
+     <option> select option</option>
+     <option> marvel</option>
+     <option> dc</option>
+     <option> sony</option>
+</select><br></br>
+<input type="checkbox" onChange={(e)=>setTnc(e.target.checked)}/><span>accept the condition</span><br></br>
+<button type="submit">submit</button>
+               
+          </form>
+           
           </div>
      );
 }
