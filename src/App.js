@@ -1,12 +1,18 @@
 
 import logo from './logo.svg';
 import './App.css';
-import Login from './Login'
+import Props from './Props'
+import Members from './Members'
 function App()
 {
+     function getData()
+          {
+               alert("hello")
+          }
      return (
          <div className="App">
-          <Login/>
+          <Props data={getData}/>
+          <Members data={getData}/>
                    </div>
      );
 }
