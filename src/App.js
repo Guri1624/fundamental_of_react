@@ -1,25 +1,28 @@
 
 import logo from './logo.svg';
 import './App.css';
-import Props from './Props'
-import Members from './Members'
-function App()
+import React from 'react'
+import { render } from '@testing-library/react';
+class App extends React.Component
 {
-     function getData()
-          {
-               alert("hello")
-          }
-     return (
-         <div className="App">
-          <Props data={getData}/>
-          <Members data={getData}/>
-                   </div>
-     );
+     constructor()
+     {
+          super();
+          this.state={
+               data:"anil"}
+       
+     }
+render()
+{
+     console.warn("render");
+     return(
+          <div>
+          <h1> {this.state.data}</h1>
+          </div>
+          )
 }
- 
+}
 export default App;
-
-
 
 
 
