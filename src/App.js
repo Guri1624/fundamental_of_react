@@ -1,20 +1,30 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react'
-import Render from './Render'
-
-
-function App()
+import React from 'react'
+class App extends React.Component
 {
-     const [name,setName]=useState("anil")
+     constructor(){
+   super();
+   this.state={
+     name:"simmu"
+   }
+
+     }
+     componenetDidMout()
+     {
+          console.warn("didmout")
+     }
+     render ()
+     {
+          console.warn("render")
      return(
           <div className="App">
-          <h1> render method in react </h1>
-          <Render name={name}/>
-          <button onClick={()=>setName("rahul")}>update name </button>
+          <h1> component did mount   {this.state.name} </h1>
+          <button onClick={()=>{this.setState({name:"sidhu"})}}>updater </button>
           </div>
           )
+     };
 }
 export default App;
 
