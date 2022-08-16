@@ -1,26 +1,20 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React from 'react'
-import { render } from '@testing-library/react';
-class App extends React.Component
+import React, { useState } from 'react'
+import Render from './Render'
+
+
+function App()
 {
-     constructor()
-     {
-          super();
-          this.state={
-               data:"anil"}
-       
-     }
-render()
-{
-     console.warn("render");
+     const [name,setName]=useState("anil")
      return(
-          <div>
-          <h1> {this.state.data}</h1>
+          <div className="App">
+          <h1> render method in react </h1>
+          <Render name={name}/>
+          <button onClick={()=>setName("rahul")}>update name </button>
           </div>
           )
-}
 }
 export default App;
 
