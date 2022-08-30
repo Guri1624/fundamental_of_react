@@ -1,27 +1,72 @@
 
 import logo from './logo.svg';
-import './App.css'
+import './App.css';
 import React from 'react'
-function App(){ 
-     const student=[
-          {name:"anil",email:'ani;l@gmail',contect:7788},
-          {name:"sam",email:'saml@gmail',contect:7558},
-          {name:"rahul",email:'rahull@gmail',contect:7788},
-     ]
+import {item,Table} from 'react-bootstrap'
+function App()
+{
+     const user=[
+           {   name:"sahil",email:'sahil@gmail',
+               adress:[
+                    {hn:"11",city:'patiala',countery:'india'},
+                    {hn:"61",city:'ablala',countery:'india'},
+                    {hn:"51",city:'ptera',countery:'india'},
+               ]
+          },
+          {
+               name:"sahil",email:'sahil@gmail',
+               adress: [
+                    {hn:"11",city:'patiala',countery:'india'},
+                    {hn:"61",city:'ablala',countery:'india'},
+                    {hn:"51",city:'ptera',countery:'india'},
+               ]
+          },
+         { 
+               name:"sahil",email:'sahil@gmail',
+               adress: [
+                    {hn:"11",city:'patiala',countery:'india'},
+                    {hn:"61",city:'ablala',countery:'india'},
+                    {hn:"51",city:'ptera',countery:'india'},
+               ]
+          }
+     ];
+
      return(
      <div className="App">
-       <h1 > arrry handle with list</h1>
-       <table border={1}>
- {
-      student.map((data)=>
-       <tr>
-          <td>{data.name}</td>
-          <td>{data.email}</td>
-          <td>{data.contect}</td>
-       </tr>
-      )
-}
-</table>
+       <h1 > nested loop with boot</h1>
+       <Table variant="dark" striped>
+          <tbody>
+               <tr>
+                    <td>name</td>
+                    <td>email</td>
+                    <td>adress</td>
+               </tr>
+          
+      
+          {
+               user.map((item)=>
+               <tr>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>
+                          {
+                              item.adress.map((data)=>
+                               <tr>
+                                    <td>{data.hn}</td>
+                                    <td>{data.city}</td>
+                                    <td>{data.countery}</td>
+                               </tr>
+                               )
+                          }
+                    </td>
+               </tr>
+               )
+          }
+          </tbody>
+          
+    
+</Table>
+
         </div>
      );
 }
