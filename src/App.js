@@ -2,21 +2,26 @@
 import logo from './logo.svg';
 import './App.css'
 import React from 'react'
-import {Button} from 'react-bootstrap'
 function App(){ 
+     const student=[
+          {name:"anil",email:'ani;l@gmail',contect:7788},
+          {name:"sam",email:'saml@gmail',contect:7558},
+          {name:"rahul",email:'rahull@gmail',contect:7788},
+     ]
      return(
      <div className="App">
-       <h1 > intall bootsrap</h1>
-       <Button onClick={()=>alert("hello")}>click me</Button>
-       <button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-<button type="button" class="btn btn-link">link</button>
+       <h1 > arrry handle with list</h1>
+       <table border={1}>
+ {
+      student.map((data)=>
+       <tr>
+          <td>{data.name}</td>
+          <td>{data.email}</td>
+          <td>{data.contect}</td>
+       </tr>
+      )
+}
+</table>
         </div>
      );
 }
