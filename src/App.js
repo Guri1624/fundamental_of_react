@@ -1,15 +1,19 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React,{useState} from 'react'
+import React,{ useState,useEffect }  from 'react'
 function App()
 {
-     const [data,setData]=useState("anil")
+const [count,setCount]=useState(0)
+     useEffect(() =>{
+          alert("useefect")
+     }
+     )
      return(
      <div className="App">
-        <h1>{data} </h1>
-        <button onClick={()=>setData("mashal")}>update data</button>
-          </div>
+        <h1>hello{count} </h1>
+        <button onClick={()=>setCount(count+1)}>update effectr</button>
+        </div>
      );
 }
 export default App;
