@@ -1,23 +1,20 @@
 
 import logo from './logo.svg';
-import './App.css';
-import React,{ useState,useEffect }  from 'react'
-function App()
-{
-const [count,setCount]=useState(0)
-     useEffect(() =>{
-          alert("useefect")
-     }
-     )
+import React, { useEffect, useState } from 'react'
+import Uefeect from './Uefeect'
+function App(){
+     const [data,setData]=useState(10);
+     const [count,setCount]=useState(10);
+     
      return(
      <div className="App">
-        <h1>hello{count} </h1>
-        <button onClick={()=>setCount(count+1)}>update effectr</button>
+          <Uefeect count={count} data={data}/>
+        <button onClick={()=>setData(data+1)}>update data </button>
+         <button onClick={()=>setCount(count+1)}>update count </button>
         </div>
      );
 }
 export default App;
-
 
 
 
