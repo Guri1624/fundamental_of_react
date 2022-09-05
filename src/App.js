@@ -2,14 +2,16 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react'
-import Previous from './Previous'
 function App()
 {
-     const [count,setCount]=useState(0)
+     const [data,setData]=useState({name:'sahil',age:'12'})
      return(
      <div className="App">
-      <Previous count={count}/>
-      <button onClick={()=>setCount(Math.floor(Math.random()*10))}>update value</button>
+    <h1>state with object</h1><br/>
+    <input type="text" placeholder='entername'  onChange={(e)=>{setData({...data,name:e.target.value})}}/>
+    <input type="text" placeholder='enterage'    onChange={(e)=>{setData({...data,age:e.target.value})}}/>
+    <h1>name ={data.name}</h1>
+    <h1>age ={data.age}</h1>
         </div>
      );
 }
