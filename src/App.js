@@ -1,72 +1,37 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React from 'react'
-import {item,Table} from 'react-bootstrap'
+import React, { useState ,table} from 'react'
 function App()
 {
-     const user=[
-           {   name:"sahil",email:'sahil@gmail',
-               adress:[
-                    {hn:"11",city:'patiala',countery:'india'},
-                    {hn:"61",city:'ablala',countery:'india'},
-                    {hn:"51",city:'ptera',countery:'india'},
-               ]
-          },
-          {
-               name:"sahil",email:'sahil@gmail',
-               adress: [
-                    {hn:"11",city:'patiala',countery:'india'},
-                    {hn:"61",city:'ablala',countery:'india'},
-                    {hn:"51",city:'ptera',countery:'india'},
-               ]
-          },
-         { 
-               name:"sahil",email:'sahil@gmail',
-               adress: [
-                    {hn:"11",city:'patiala',countery:'india'},
-                    {hn:"61",city:'ablala',countery:'india'},
-                    {hn:"51",city:'ptera',countery:'india'},
-               ]
-          }
-     ];
-
+     const[ data,setData]=useState([])
+     useState(()=>{
+          fetch("https://jsonplaceholder.typicode.com/todos").then((result)=>{
+           result.json().then((resp)=>{
+     setData(resp)
+     } )
+})
+     },[] )
+     console.warn(data)
      return(
      <div className="App">
-       <h1 > nested loop with boot</h1>
-       <Table variant="dark" striped>
-          <tbody>
-               <tr>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>adress</td>
-               </tr>
-          
-      
+       <h1 > api call</h1>
+       <table border="2">
+          <tr>
+               <td>UserId</td>
+               <td>id</td>
+               <td>title</td>
+          </tr>
           {
-               user.map((item)=>
+               data.map((prop)=>
                <tr>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>
-                          {
-                              item.adress.map((data)=>
-                               <tr>
-                                    <td>{data.hn}</td>
-                                    <td>{data.city}</td>
-                                    <td>{data.countery}</td>
-                               </tr>
-                               )
-                          }
-                    </td>
-               </tr>
+               <td>{prop.userId}</td>
+               <td>{prop.id}</td>
+               <td>{prop.title}</td>
+          </tr>
                )
           }
-          </tbody>
-          
-    
-</Table>
-
+       </table>
         </div>
      );
 }
