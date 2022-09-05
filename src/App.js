@@ -1,37 +1,23 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, { useState ,table} from 'react'
+import React, { useState } from 'react'
 function App()
 {
-     const[ data,setData]=useState([])
-     useState(()=>{
-          fetch("https://jsonplaceholder.typicode.com/todos").then((result)=>{
-           result.json().then((resp)=>{
-     setData(resp)
-     } )
-})
-     },[] )
-     console.warn(data)
+     const[count,setCount]=useState(1)
+    function Update()
+     {
+        for (let i=1;i<5;i++)
+        {
+          setCount((pree)=>{
+               return pree+1
+          })
+        }
+     }
      return(
      <div className="App">
-       <h1 > api call</h1>
-       <table border="2">
-          <tr>
-               <td>UserId</td>
-               <td>id</td>
-               <td>title</td>
-          </tr>
-          {
-               data.map((prop)=>
-               <tr>
-               <td>{prop.userId}</td>
-               <td>{prop.id}</td>
-               <td>{prop.title}</td>
-          </tr>
-               )
-          }
-       </table>
+       <h1 >{count}</h1>
+      <button onClick={Update}>click me and update</button>
         </div>
      );
 }
