@@ -1,21 +1,37 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react'
-function App()
+import React from 'react';
+import { Commoncontext } from './Newcomp/Commoncontext';
+import  Main  from './Newcomp/Main';
+import Updatebutton from './Newcomp/Updatebutton';
+class App extends React.Component
 {
-     const [data,setData]=useState({name:'sahil',age:'12'})
+     constructor (){
+          super();
+          this.updateColor=(color)=>{
+               this.setState({
+                    color:color
+               })
+          }
+          this.state={
+               color:"green",
+               updateColor:this.updateColor
+          }
+        
+     }
+     render (){
      return(
-     <div className="App">
-    <h1>state with object</h1><br/>
-    <input type="text" placeholder='entername'  onChange={(e)=>{setData({...data,name:e.target.value})}}/>
-    <input type="text" placeholder='enterage'    onChange={(e)=>{setData({...data,age:e.target.value})}}/>
-    <h1>name ={data.name}</h1>
-    <h1>age ={data.age}</h1>
-        </div>
+          <Commoncontext.Provider value={this.state}>
+          <h1>CONTEXT API  </h1>
+           <Main/>
+           <Updatebutton/>
+           </Commoncontext.Provider>
      );
+     }
 }
 export default App;
+
 
 
 
