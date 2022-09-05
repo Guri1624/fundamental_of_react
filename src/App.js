@@ -2,22 +2,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react'
+import Previous from './Previous'
 function App()
 {
-     const[count,setCount]=useState(1)
-    function Update()
-     {
-        for (let i=1;i<5;i++)
-        {
-          setCount((pree)=>{
-               return pree+1
-          })
-        }
-     }
+     const [count,setCount]=useState(0)
      return(
      <div className="App">
-       <h1 >{count}</h1>
-      <button onClick={Update}>click me and update</button>
+      <Previous count={count}/>
+      <button onClick={()=>setCount(Math.floor(Math.random()*10))}>update value</button>
         </div>
      );
 }
