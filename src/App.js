@@ -1,34 +1,55 @@
-
+ 
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import { Commoncontext } from './Newcomp/Commoncontext';
-import  Main  from './Newcomp/Main';
-import Updatebutton from './Newcomp/Updatebutton';
-class App extends React.Component
+import React, { useEffect, useState } from 'react'
+function App()
 {
-     constructor (){
-          super();
-          this.updateColor=(color)=>{
-               this.setState({
-                    color:color
+     const [data,setData]=useState([]);
+     let record;
+     useEffect(()=>{
+         
+         
+     },[])
+
+     function abcd(){
+          fetch ("https://jsonplaceholder.typicode.com/users").then((result)=>{
+               result.json().then((resp)=>{
+                    record = resp;
+               setData(resp)
                })
-          }
-          this.state={
-               color:"green",
-               updateColor:this.updateColor
-          }
-        
+          })
+          console.warn(data);
+
      }
-     render (){
+     console.warn("======== ",data);
+
      return(
-          <Commoncontext.Provider value={this.state}>
-          <h1>CONTEXT API  </h1>
-           <Main/>
-           <Updatebutton/>
-           </Commoncontext.Provider>
+          <div className='App'>
+          <h1>API call</h1>
+          <button onClick={()=>abcd()}>click me </button>
+          <table  border="2">
+               <tbody>
+                    <tr>
+                         <td>userid</td>
+                         <td>name</td>
+                         <td>salary</td>
+                    </tr>
+                    { data.map((item)=>
+                         <tr>
+                              <td>{item.id}</td>
+                              <td>{item.name}</td>
+                              <td>{item.email}</td>
+                         </tr>
+
+                         )
+                    }     
+               </tbody>
+              
+             
+          </table>
+         
+          </div>
      );
-     }
 }
 export default App;
 
