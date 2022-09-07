@@ -1,61 +1,67 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 function App()
 {
-     const [status,setstatus]=React.useState(false)
-     return(
-     <div className="App">{
-               status?<h1>my name is guri </h1>:null
+     const [data,setData]=useState([]);
+     let record;
+     useEffect(()=>{
+
+     },[])
+
+     function abcd(){
+          fetch ("https://jsonplaceholder.typicode.com/users").then((result)=>{
+               result.json().then((resp)=>{
+                    record = resp;
+               setData(resp)
+               })
+          })
+          console.warn(data);
+
      }
-               <button onClick={()=>setstatus(!status)}>show</button>
-          </div>
-     );
+     console.warn("======== ",data);
+        function deletuser(id)
+          {
+               fetch(`https://jsonplaceholder.typicode.com/users/${id}`,{
+               method:'DELETE'
+               }).then((result)=>{
+                    result.json().then((resp)=>{
+                         console.warn(resp)
+                         })
+               })
+          }
+          
+               return(
+                    <div className='App'>
+                    <h1>API call</h1>
+                    <button onClick={()=>abcd()}>click me </button>
+                    <table  border="2">
+                         <tbody>
+                              <tr>
+                                   <td>userid</td>
+                                   <td>name</td>
+                                   <td>gmail</td>
+                              </tr>
+                              { data.map((item,i)=>
+                                   <tr key={i}>
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                        <td><button onClick={()=>deletuser(item.id)}>delete</button></td>
+                                   </tr>
+
+                                   )
+                              }     
+                         </tbody>
+                    
+                    
+                    </table>
+               
+                    </div>
+               )
 }
- 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
