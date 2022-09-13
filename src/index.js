@@ -5,11 +5,18 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 
+//
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './Service1/Reducer1/Index1'
+const store = createStore(rootReducer)
+
+//
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

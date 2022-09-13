@@ -25,7 +25,37 @@
 }
 .App-link {
   color: #61dafb;
+}/*  */
+
+.img-warapper item{
+  height: 100px;
+  width: 500px;
+  border: 1px solid;
 }
+.btn-warper button{
+background-color: red;
+border: 0px;
+padding: 10px;
+border-radius: 4px;
+color: #fff;
+}
+.img-warapper img{
+  width: 100px;
+  margin-top: -10px;
+}
+.img-card img{
+  width: 90px;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+}
+buttons.remove-cart-btn{
+  background-color: rebeccapurple;
+  margin-top: 8px;
+}
+
+
+/*    */
 
 @keyframes App-logo-spin {
   from {
